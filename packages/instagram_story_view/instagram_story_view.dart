@@ -43,21 +43,26 @@ class _InstagramStoryViewState extends State<InstagramStoryView> {
         opaque: false,
         transitionDuration: const Duration(milliseconds: 350),
         reverseTransitionDuration: const Duration(milliseconds: 300),
-        pageBuilder: (_, _, _) => StoryOverlay(
-          items: widget.items,
-          initialIndex: index,
-          startPosition: pos,
-          startSize: size,
-        ),
-        transitionsBuilder:
-            (
-              BuildContext context,
-              Animation<double> animation,
-              Animation<double> secondaryAnimation,
-              Widget child,
-            ) {
-              return child;
-            },
+        pageBuilder: (
+          BuildContext context,
+          Animation<double> animation,
+          Animation<double> secondaryAnimation,
+        ) {
+          return StoryOverlay(
+            items: widget.items,
+            initialIndex: index,
+            startPosition: pos,
+            startSize: size,
+          );
+        },
+        transitionsBuilder: (
+          BuildContext context,
+          Animation<double> animation,
+          Animation<double> secondaryAnimation,
+          Widget child,
+        ) {
+          return child;
+        },
       ),
     );
   }
@@ -72,7 +77,6 @@ class _InstagramStoryViewState extends State<InstagramStoryView> {
         separatorBuilder: (BuildContext context, int index) {
           return SizedBox(width: widget.spacing);
         },
-
         itemBuilder: (_, index) {
           return Container(
             key: _keys[index],
